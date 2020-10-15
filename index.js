@@ -1,3 +1,32 @@
+<<<<<<< HEAD
+const bodyParser = require('body-parser');
+const morgan = require('morgan');
+const express = require('express');
+const app = express();
+const pokemon = require('./routes/pokemon');
+
+/*
+VEERBOS HTTP
+GET: OBTENER UN RECURSO
+POST: ALMACENAR/CREAR 
+PATCH: ACTUALIZACION DE UN RECURSO EN ESPECIFICO X EJEMPLO UN ELEMENTO MODIFICADO 
+PUT: ACTUALIZACION DE RECURSOS X EJEMPLO ACTUALIZAR TODOS LOS DATOS 
+DELETE: BORRAR DATOS
+*/
+app.use(morgan('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true}));
+
+
+app.get("/", (req, res, next) => {
+	return res.status(200).send("Bienvenido al Pokedex");
+});
+
+app.use("/pokemon", pokemon);
+
+app.listen(process.env.PORT || 3000, () => {
+	console.log('Server is running');
+=======
 const bodyParser = require('body-parser');
 const express = require('express');
 const app = express();
@@ -51,4 +80,5 @@ app.get('/pokemon/:name([A-Za-z]+)', (req, res, next) =>{
 
 app.listen(process.env.PORT || 3000, () => {
 	console.log('Server is running');
+>>>>>>> 6852c8c07829f3b20d8e607e44b0a7f0f7bf599a
 });
